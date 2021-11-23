@@ -151,7 +151,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group.
+The name of the resource group where Failover Group will be created. 
 
 ```yaml
 Type: System.String
