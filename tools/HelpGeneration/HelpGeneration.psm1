@@ -91,10 +91,12 @@ function Test-AzMarkdownHelp
         $HelpFolder = Get-Item $HelpFolderPath
         $Exceptions = Import-Csv "$SuppressedExceptionsPath\ValidateHelpIssues.csv"
         [String[]]$errors = @()
-        $MarkdownFiles = Get-ChildItem -Path $HelpFolder
+        Write-Host $HelpFolder
+        $MarkdownFiles = Get-ChildItem -Path $HelpFolder -Include "*.md"
         $ModuleName = ($MarkdownFiles | where { $_.Name -notlike "*-*" }).Name -replace ".md",""
         foreach ($file in $MarkdownFiles)
         {
+            Write-Host $file
             # Ignore the module page
             if ($file.Name -notlike "*-*")
             {

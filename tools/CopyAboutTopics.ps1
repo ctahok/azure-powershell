@@ -15,6 +15,7 @@ function CopyAboutTopicsToCultureFolder {
     Get-ChildItem -Filter *.help.txt -Path $AboutFolder | Copy-Item -Destination $CultureFolder
 }
 
+.($PSScriptRoot + "\PreloadToolDll.ps1")
 $AboutFolders = Get-ChildItem -Include 'About' -Path "$PSScriptRoot\..\artifacts\$BuildConfig" -Recurse -Directory | where { -not [Tools.Common.Utilities.ModuleFilter]::IsAzureStackModule($_.FullName) }
 
 foreach ($AboutFolder in $AboutFolders)
